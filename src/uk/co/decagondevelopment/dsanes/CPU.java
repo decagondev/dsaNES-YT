@@ -86,7 +86,7 @@ public class CPU {
 		opcodes[0x17] = "BRK";
 		opcodes[0x18] = "CLC";
 		opcodes[0x19] = "BRK";
-		opcodes[0x1A] = "BRK";
+		opcodes[0x1A] = "NOP"; // done housekeeping
 		opcodes[0x1B] = "BRK";
 		opcodes[0x1C] = "BRK";
 		opcodes[0x1D] = "BRK";
@@ -230,7 +230,7 @@ public class CPU {
 		opcodes[0x9F] = "BRK";
 		
 		opcodes[0xA0] = "BRK";
-		opcodes[0xA1] = "NOP";
+		opcodes[0xA1] = "NOP"; // TODO: change to LDA
 		opcodes[0xA2] = "BRK";
 		opcodes[0xA3] = "BRK";
 		opcodes[0xA4] = "BRK";
