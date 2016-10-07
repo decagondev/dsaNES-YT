@@ -31,10 +31,10 @@ public class CPU {
             ram.write(i, 0xFF);
         }
 
-        ram.write(0x0008, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xf7
-        ram.write(0x0009, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xef
-        ram.write(0x000A, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xdf
-        ram.write(0x000F, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xbf
+      //  ram.write(0x0008, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xf7
+      //  ram.write(0x0009, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xef
+      //  ram.write(0x000A, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xdf
+     //   ram.write(0x000F, Integer.parseInt(Utility.toHex(Utility.generateInt(256)))); // 0xbf
 
         for (int i = 0x4000; i <= 0x4017; ++i) { //may need to change to 0x400f
             ram.write(i, 0x00);
@@ -352,5 +352,19 @@ public class CPU {
 		return this.clocks;
 	}
 	
-	
+	public void run(int[] inst) {
+		for (int i = 0; i < inst.length; i++) {
+			switch(inst[i]) {
+			case 0x78:
+				System.out.println("SEI at " + (String.format("0x%04X", i)));		
+			case 0xD8:
+				System.out.println("CLD at " + (String.format("0x%04X", i)));		
+			case 0xA9:
+				System.out.println("TXS at " + (String.format("0x%04X", i)));		
+			case 0xCA:
+				System.out.println("DEX at " + (String.format("0x%04X", i)));		
+			
+			}	
+		}
+	}
 }

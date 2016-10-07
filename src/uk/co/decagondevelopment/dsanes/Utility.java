@@ -33,6 +33,8 @@ public class Utility {
 		return startRange + (long)(randomGenerator.nextDouble() * (endRange - startRange));		
 	}
 	
+	// read rom method
+	
 	public static int[] readRom(final String path) {
 		
 		File rom = new File(path);
