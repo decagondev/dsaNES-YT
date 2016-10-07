@@ -14,6 +14,10 @@ public class NesMemory {
 		this.mapper = mapper;
 		Arrays.fill(wRam, 0xff);
 	}
+	
+	public NesMemory() {
+		Arrays.fill(wRam, 0xff);
+	}
 
 
 	public void write(int addr, int val) {

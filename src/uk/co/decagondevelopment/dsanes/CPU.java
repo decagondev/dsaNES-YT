@@ -2,7 +2,7 @@ package uk.co.decagondevelopment.dsanes;
 
 public class CPU {
 	
-	private NesMemory ram;
+	private NesMemory ram = new NesMemory();
 	
 	private int cycles;
 	private int clocks;
