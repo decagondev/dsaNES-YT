@@ -13,8 +13,8 @@ public class CPU {
 	
 	//status flags
 	private boolean carryFlag = false;
-	private boolean decimalMode = false;
-	private boolean interruptDissable = true;
+	private boolean decimalModeFlag = false;
+	private boolean interruptDissableFlag = true;
 	private boolean negativeFlag = false;
 	private boolean overflowFlag = false;
 	private boolean zeroFlag = false;
@@ -345,6 +345,9 @@ public class CPU {
 		this.clocks = val;
 	}
 	
+
+
+	
 	
 	//getters
 	
@@ -355,16 +358,54 @@ public class CPU {
 	public void run(int[] inst) {
 		for (int i = 0; i < inst.length; i++) {
 			switch(inst[i]) {
-			case 0x78:
-				System.out.println("SEI at " + (String.format("0x%04X", i)));		
+			case 0x78: // SEI imm
+				sei(imm());
+				System.out.println("SEI at " + (String.format("0x%04X", i)));
+				break;
 			case 0xD8:
-				System.out.println("CLD at " + (String.format("0x%04X", i)));		
+				cld();
+				System.out.println("CLD at " + (String.format("0x%04X", i)));	
+				break;
 			case 0xA9:
-				System.out.println("TXS at " + (String.format("0x%04X", i)));		
-			case 0xCA:
+				lda(imm());
+				System.out.println("LDA at " + (String.format("0x%04X", i)));	
+				break;
+			case 0xCA: // dec on x and 
 				System.out.println("DEX at " + (String.format("0x%04X", i)));		
-			
+				dex();
+				break;
 			}	
 		}
+		
 	}
+	
+	private void sei(int addr) {
+		//TODO: implement delayInterrupt() method
+		interruptDissableFlag = true;
+	}
+	
+	private void cld() {
+		decimalModeFlag = false;
+	}
+	
+	private void lda(int addr) {
+		//TODO implement method
+	}
+	
+	private void dex() {
+		x--;
+		x &= 0xFF;
+		setFlags(x);
+	}
+	
+	private int imm() { //TODO: complete method
+		return 0;
+	}
+	
+	private void setFlags(int flag) {
+		// TODO: implement setFlags method
+	}
+	
+	
+	
 }
